@@ -1,0 +1,80 @@
+.features-showcase-section {
+    padding: 4rem 0;
+    background-color: #ffffff;
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .feature-item {
+        flex: 0 1 30%;
+        margin-bottom: 2rem;
+
+        .feature-card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            text-align: center;
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+            position: relative;
+            height: 300px; /* Adjusted to make cards square */
+
+            &:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(135deg, rgba(0, 123, 255, 0.1), rgba(0, 123, 255, 0.2));
+                    z-index: -1;
+                }
+            }
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item-title {
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #007bff;
+        }
+
+        .feature-item-description {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+    }
+
+    /* Media Query for Responsive Layout */
+    @media (max-width: 1024px) {
+        .row {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .feature-item {
+            flex: 1 1 100%; /* Full width on smaller screens */
+
+            .feature-card {
+                width: 100%; /* Full width cards */
+                height: auto; /* Allow auto height for smaller devices */
+            }
+        }
+    }
+}

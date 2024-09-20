@@ -1,0 +1,175 @@
+.features-content-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    // gap: 6rem;
+    padding: 0 10px;
+    margin-top: 4rem;
+}
+
+.denexa-services {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #e5e5eb, #f7f4f4);
+    padding: 100px 10;
+    justify-content: center;
+    margin-left: 5rem 0;
+}
+
+.denexa-services-content {
+    flex-direction: column;
+    justify-content: center;
+    max-width: 600px;
+    text-align: center;
+    margin-bottom: 60px;
+
+    .subtitle {
+        font-size: 1.5rem;
+        color: $medium-grey;
+    }
+
+    .section-title {
+        font-size: 4rem;
+        margin: 0.5rem 0;
+        color: $light-blue;
+
+        @include respond-to(md) {
+            font-size: 2.5rem;
+        }
+    }
+
+    .service-steps {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 2.5rem;
+
+        .service-step {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+
+            .icon {
+                img {
+                    width: 80px;
+                    margin-bottom: 1rem;
+                }
+            }
+
+            .text {
+                .step-title {
+                    font-size: 2rem;
+                    margin-bottom: 1rem;
+                }
+
+                p {
+                    font-size: 1.5rem;
+                    color: $medium-grey;
+                }
+            }
+        }
+    }
+}
+
+/* Featured Service Section */
+.featured-service {
+    background-color: $white;
+    color: $dark-gray;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
+    img {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .featured-title {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+        color: $dark-gray;
+    }
+
+    .featured-subtitle {
+        font-size: 1.2rem;
+        color: #888;
+        margin-bottom: 1.5rem;
+    }
+
+    .service-icons {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 1.5rem;
+
+        .icon {
+            font-size: 1.5rem;
+            color: $cta-bg;
+        }
+    }
+
+    .service-likes {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        .count {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 1rem;
+
+            i {
+                color: $cta-bg;
+            }
+        }
+
+        i {
+            font-size: 1.5rem;
+            color: $cta-bg;
+        }
+    }
+}
+
+/* Responsive Design */
+@include respond-to(md) {
+    .features-content-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0 10px;
+        margin-top: 2.5rem;
+    }
+
+    .service-steps {
+        flex-direction: column;
+    }
+
+    .service-step {
+        margin-bottom: 20px;
+    }
+
+    .featured-service {
+        text-align: center;
+    }
+}
+
+@include respond-to(lg) {
+    .featured-service img {
+        width: 100%;
+        max-width: 480px;
+        height: 480px;
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+    }
+}

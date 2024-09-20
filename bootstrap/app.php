@@ -11,7 +11,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        // Register global middleware
+        \App\Http\Middleware\Authenticate::class;
+        \App\Http\Middleware\RoleMiddleware::class;
+        \App\Http\Middleware\EnsureTwoFactorEnabled::class;
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

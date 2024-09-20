@@ -1,0 +1,48 @@
+.hero-section {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #6c63ff, #ff6f61);
+    padding: 100px 10px;
+
+    .hero-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+
+        .hero-text {
+            flex: 1;
+            text-align: left;
+
+            .sub-heading {
+                font-size: 1.2rem;
+                color: #ddd;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+                margin: 0.5rem 0;
+                color: $white; // Assuming $white is defined in _variables.scss
+            }
+
+            .hero-description {
+                font-size: 1.25rem;
+                margin-bottom: 2rem;
+                color: $white; // Assuming $white is defined in _variables.scss
+            }
+        }
+
+        .glowing-image {
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+    }
+
+    .hero-image {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,64 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $light-color; // Light background for navbar
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+
+    .navbar-brand {
+        color: $primary-color; // Brand color
+        font-weight: bold;
+
+        &:hover {
+            color: darken($primary-color, 10%); // Darker on hover
+        }
+    }
+
+    .d-flex {
+        align-items: center; // Center items vertically
+
+        .dropdown {
+            position: relative;
+
+            .dropdown-toggle {
+                color: $text-color; // Icon color
+                font-size: 1.5rem; // Icon size
+
+                &:hover {
+                    color: $primary-color; // Change color on hover
+                }
+            }
+
+            .dropdown-menu {
+                min-width: 200px; // Set a minimum width for dropdown
+                border-radius: 0.5rem; // Rounded corners
+                padding: 0; // Remove padding
+
+                .dropdown-item {
+                    color: $text-color; // Item color
+                    padding: 0.75rem 1rem; // Padding for dropdown items
+
+                    &:hover {
+                        background-color: rgba(0, 0, 0, 0.1); // Highlight on hover
+                    }
+                }
+            }
+        }
+
+        img {
+            border-radius: 50%; // Circular profile picture
+            width: 40px; // Fixed width for profile image
+            height: 20px; // Maintain aspect ratio
+        }
+    }
+}
+
+.dashboard-header {
+    border-right: 1px solid #e2e5ec;
+    font-weight: 400;
+    padding-right: 20px;
+    margin-right: 15px;
+    display: flex;
+    align-items: flex-start;
+}

@@ -1,0 +1,24 @@
+/* Layout styles */
+#layout-wrapper {
+    display: flex;
+    height: 100vh;
+
+    .main-content {
+        margin-left: 250px; // Width of the sidebar
+        width: calc(100% - 250px);
+        padding: $spacing-unit;
+        background-color: $light-color;
+    }
+
+    .container-fluid {
+        padding: 0 $spacing-unit;
+    }
+
+    /* Page content area */
+    .content {
+        padding: $spacing-unit * 2;
+        background-color: #fff;
+        @include box-shadow();
+        @include border-radius(4px);
+    }
+}

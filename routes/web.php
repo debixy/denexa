@@ -23,19 +23,23 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
-Route::post('/register', [AuthController::class, 'register']);
+Route::middleware(['web'])->group(function () {
+    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+    Route::get('/kyc', [AuthController::class, 'showKycForm'])->name('kyc.form');
+    Route::post('/register', [AuthController::class, 'register'])->name('register');
+    Route::post('/kyc', [AuthController::class, 'submitKyc'])->name('kyc.submit');
+});
 
 
 Route::get('/verify-email/{id}', [AuthController::class, 'verifyEmail']);
 Route::post('/enable-two-factor', [AuthController::class, 'enableTwoFactor']);
 
-
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/dashboard/profile', [DashboardController::class, 'profile'])->name('dashboard.profile');
-    Route::get('/dashboard/activities', [DashboardController::class, 'recentActivities'])->name('dashboard.activities');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('/dashboard/profile', [DashboardController::class, 'profile'])->name('profile'); // Add this line
+    Route::get('/dashboard/activities', [DashboardController::class, 'recentActivities'])->name('activities'); // Ensure this route exists
 });
+
 
 
 

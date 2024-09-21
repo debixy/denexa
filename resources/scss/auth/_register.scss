@@ -1,0 +1,152 @@
+.register-page {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    // Background blur effect
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: $background-light; // Light background color or image
+        filter: blur(10px);
+        z-index: 1; // Place behind the card
+    }
+
+    // Register Card
+    .register-card {
+        background-color: $white;
+        border-radius: 10px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        padding: 2rem;
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+        position: relative; // For z-index stacking
+        z-index: 2; // Bring the card above the blurred background
+
+        .logo-container {
+            margin-bottom: 1.5rem;
+
+            .logo {
+                width: 150px; /* Adjust logo size */
+            }
+        }
+
+        .description {
+            margin-bottom: 1.5rem;
+
+            .register-title {
+                font-size: 1.8rem;
+                font-weight: bold;
+                color: $primary_color;
+            }
+
+            .register-text {
+                font-size: 1rem;
+                color: $medium-grey;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+
+            .form-label {
+                font-size: 1rem;
+                font-weight: 600;
+                color: $primary_color;
+                display: inline-block;
+                margin-bottom: 0.5rem;
+            }
+
+            .form-input {
+                width: 100%;
+                padding: 0.75rem;
+                border: 1px solid $light-gray;
+                border-radius: 5px;
+                font-size: 1rem;
+                @include transition(border-color, box-shadow);
+
+                &:focus {
+                    border-color: $primary_color;
+                    box-shadow: 0 0 5px rgba(27, 47, 90, 0.3);
+                }
+            }
+
+            .text-danger {
+                color: $cta-bg;
+                font-size: 0.85rem;
+                margin-top: 0.25rem;
+            }
+        }
+
+        .register-btn {
+            background: $cta-bg;
+            color: $white;
+            padding: 1rem 1.5rem;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            width: 100%;
+            @include transition(background-color);
+
+            &:hover {
+                background-color: $cta-bg-hover;
+            }
+        }
+
+        .login-link {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: $muted-color;
+
+            .login-link-text {
+                color: $light-blue;
+                font-weight: 500;
+                @include transition(color);
+
+                &:hover {
+                    color: darken($light-blue, 10%);
+                }
+            }
+        }
+
+        .social-links {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: $medium-grey;
+
+            .social-buttons {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+
+                .social-btn {
+                    background-color: $light-gray;
+                    color: $white;
+                    padding: 0.5rem 1rem;
+                    border-radius: 5px;
+                    text-decoration: none;
+                    @include transition(background-color);
+
+                    &.facebook {
+                        background-color: #3b5998; // Facebook color
+                    }
+
+                    &.google {
+                        background-color: #db4437; // Google color
+                    }
+
+                    &:hover {
+                        background-color: darken($light-gray, 10%);
+                    }
+                }
+            }
+        }
+    }
+}

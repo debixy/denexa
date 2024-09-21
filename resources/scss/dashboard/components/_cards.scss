@@ -1,0 +1,30 @@
+/* cards.scss */
+.card {
+    border: 1px solid #e0e0e0;
+    border-radius: $border-radius;
+    padding: $spacing-unit;
+    background-color: #fff;
+}
+
+.card-header {
+    font-weight: bold;
+    margin-bottom: $spacing-unit;
+}
+
+.card-body {
+    padding: $spacing-unit;
+}
+
+.swiper-wrapper {
+    .swiper-slide {
+        padding: 1.5rem;
+        white-space: nowrap;
+        .website-analytics-text-bg {
+            background-color: rgba-to-hex(rgba($primary, 0.85), $rgba-to-hex-bg-inverted);
+            padding: 0.25rem 0.65rem;
+            border-radius: $border-radius;
+            min-width: 46px;
+            text-align: center;
+        }
+    }
+}

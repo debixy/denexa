@@ -1,0 +1,13 @@
+/* navbar.scss */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: $spacing-unit;
+    background-color: $primary-color;
+    color: white;
+}
+
+.nav-item {
+    margin-left: $spacing-unit;
+    list-style: none;
+}

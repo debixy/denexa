@@ -1,0 +1,18 @@
+/* buttons.scss */
+.btn {
+    display: inline-block;
+    padding: 0.5em 1em;
+    border-radius: $border-radius;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: $primary-color;
+    color: #fff;
+}
+
+.btn-secondary {
+    background-color: $secondary-color;
+    color: #fff;
+}

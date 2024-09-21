@@ -13,10 +13,14 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^6.6.0",
         "@popperjs/core": "^2.11.8",
+        "apexcharts": "^3.53.0",
         "autoprefixer": "^10.4.20",
         "bootstrap": "^5.3.3",
+        "bootstrap-icons": "^1.11.3",
         "feather-icons": "^4.29.2",
+        "jquery": "^3.7.1",
         "postcss": "^8.4.47",
-        "sass": "^1.79.1"
+        "sass": "^1.79.1",
+        "swiper": "^11.1.14"
     }
 }

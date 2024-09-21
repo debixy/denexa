@@ -1,0 +1,28 @@
+/* Page title styles */
+.page-title-box {
+    margin-bottom: $spacing-unit * 2;
+    padding: $spacing-unit;
+    background-color: $light-color;
+    border-bottom: 1px solid $dark-color;
+
+    h4 {
+        margin: 0;
+        font-weight: $font-weight-heading;
+    }
+
+    .breadcrumb {
+        background: none;
+        padding: 0;
+        margin: 0;
+
+        .breadcrumb-item {
+            font-size: 0.875rem;
+            color: $muted-color;
+
+            &.active {
+                font-weight: $font-weight-heading;
+                color: $text-color;
+            }
+        }
+    }
+}

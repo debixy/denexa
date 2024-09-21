@@ -1,0 +1,19 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    font-size: $font-size-base;
+}
+
+body {
+    font-family: $font-family-base;
+    background-color: $light-color;
+    color: $text-color;
+    line-height: 1.6;
+}

@@ -6,101 +6,117 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\AuthService;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class AuthController extends Controller
 {
     protected $authService;
 
-    /**
-     * Constructor to inject AuthService
-     *
-     * @param AuthService $authService
-     */
+    // Constructor to inject AuthService dependency
     public function __construct(AuthService $authService)
     {
         $this->authService = $authService;
     }
 
-    /**
-     * Show the login form
-     *
-     * @return \Illuminate\View\View
-     */
+    // Show login form
     public function showLoginForm()
     {
         return view('auth.login');
     }
 
-    /**
-     * Show the registration form
-     *
-     * @return \Illuminate\View\View
-     */
+    // Show registration form
     public function showRegisterForm()
     {
         return view('auth.register');
     }
 
-    /**
-     * Handle registration request
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
+    // Handle user registration
     public function register(Request $request)
     {
-        // Validate the request
+        // Validate user input
         $validator = Validator::make($request->all(), [
             'username' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
         ]);
 
+        // If validation fails, redirect back with errors
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        // Register the user using the AuthService
-        $this->authService->register($request->all());
+        // Create the user through the AuthService
+        $user = $this->authService->register($request->all());
 
-        // Redirect to login page with success message
-        return redirect()->route('login')->with('success', 'Registration successful. Please login.');
+        // Automatically log in the user after registration
+        Auth::login($user);
+
+        // Redirect to KYC form with a success message
+        return redirect()->route('kyc.form')->with('success', 'Registration successful! Please complete your KYC.');
     }
 
-    /**
-     * Handle login request
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
+    // Show KYC form
+    public function showKycForm()
+    {
+        return view('auth.kyc'); // Return the KYC form view
+    }
+
+    public function submitKyc(Request $request)
+    {
+        // Validate the KYC form data
+        $validator = Validator::make($request->all(), [
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'phone' => 'required|string|max:15',
+            'address' => 'required|string|max:255',
+            'birthday' => 'required|date',
+            'country' => 'required|string|max:255',
+        ]);
+
+        // If validation fails, redirect back with errors
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // Update the user's KYC information
+        $user = Auth::user();
+        $user->update($request->only('first_name', 'last_name', 'phone', 'address', 'birthday', 'country'));
+
+        // Create an activity log for KYC completion
+        $user->activities()->create([
+            'description' => 'Completed KYC process.',
+        ]);
+
+        // Redirect to the dashboard with a success message
+        return redirect()->route('dashboard.index')->with('success', 'KYC information submitted successfully.');
+    }
+
+    // Handle user login
     public function login(Request $request)
     {
-        // Validate the request
+        // Validate login credentials
         $credentials = $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
 
-        // Attempt login via the AuthService
+        // Attempt login using AuthService
         if ($this->authService->login($credentials)) {
-            // Redirect to dashboard or intended route after login
             return redirect()->route('dashboard')->with('success', 'Login successful.');
         }
 
-        // If authentication fails, redirect back with error
+        // If login fails, redirect back with an error message
         return redirect()->back()->withErrors(['email' => 'Invalid credentials.'])->withInput();
     }
 
-    /**
-     * Log out the current user
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
+    // Handle user logout
     public function logout()
     {
+        // Log the user out via AuthService
         $this->authService->logout();
+
+        // Redirect to login page with a success message
         return redirect()->route('login')->with('success', 'Logout successful.');
     }
 }

@@ -1,0 +1,13 @@
+/* Footer styles */
+.footer {
+    background-color: $light-color;
+    padding: $spacing-unit;
+    text-align: center;
+    color: $muted-color;
+    border-top: 1px solid $dark-color;
+
+    p {
+        margin: 0;
+        font-size: 0.9rem;
+    }
+}

@@ -29,6 +29,7 @@ class RegisterRequest extends FormRequest
             'password' => 'required|string|min:8|confirmed',
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
+            'country_id' => 'required|string|max:255',
         ];
     }
 }

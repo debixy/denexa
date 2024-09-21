@@ -1,0 +1,26 @@
+/* Utility classes using spacing variables */
+.mt-1 {
+    margin-top: $spacing-unit;
+}
+.mb-1 {
+    margin-bottom: $spacing-unit;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.bg-light {
+    background-color: $light-color;
+}
+.bg-dark {
+    background-color: $dark-color;
+    color: #fff;
+}
+
+.vh-100 {
+    height: 100vh;
+}
+.w-100 {
+    width: 100%;
+}

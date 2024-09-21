@@ -1,22 +1,62 @@
+import '../js/dashboard';
+
 document.addEventListener('DOMContentLoaded', init);
 
 function init() {
-    setupNavbarToggle();
-    setupScrollAnimations();
-    setupExploreButtonHover();
-    initializeTestimonials();
+    setupNavbarToggle();         // Handle mobile navbar toggle
+    setupScrollAnimations();     // Initialize any scroll animations
+    setupExploreButtonHover();   // Handle hover effects for the explore button
+    initializeTestimonials();    // Initialize testimonials carousel
+    setupDropdownToggle();       // Handle dropdown menus on mobile and desktop
+    stickyNavbarOnScroll();      // Add sticky navbar functionality on scroll
 }
 
+// Navbar toggle for mobile
 function setupNavbarToggle() {
     const toggler = document.querySelector('.navbar-toggler');
     const navLinks = document.querySelector('.navbar-links');
 
-    toggler.addEventListener('click', () => {
-        toggler.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    });
+    if (toggler && navLinks) {  // Ensure both exist
+        toggler.addEventListener('click', () => {
+            toggler.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+    }
 }
 
+// Sticky navbar on scroll
+function stickyNavbarOnScroll() {
+    const navbar = document.querySelector('.navbar');
+
+    if (navbar) {  // Ensure the navbar exists
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('sticky');
+            } else {
+                navbar.classList.remove('sticky');
+            }
+        });
+    }
+}
+
+// Dropdown toggle for mobile and card-like design for desktop
+function setupDropdownToggle() {
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+    if (dropdownToggles) {
+        dropdownToggles.forEach(dropdownToggle => {
+            dropdownToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const dropdownMenu = dropdownToggle.nextElementSibling;
+                if (dropdownMenu) {
+                    dropdownMenu.classList.toggle('active');
+                }
+            });
+        });
+    }
+}
+
+// Scroll animations setup (if applicable)
 function setupScrollAnimations() {
     const scrollElements = document.querySelectorAll("[data-scroll]");
     const offset = 150;
@@ -41,6 +81,7 @@ function setupScrollAnimations() {
     handleScrollAnimation(); // Initialize animations on load
 }
 
+// Explore button hover effect
 function setupExploreButtonHover() {
     const exploreButton = document.querySelector('.explore-btn');
     if (exploreButton) {
@@ -53,6 +94,7 @@ function scaleButton(button, scale) {
     button.style.transform = `scale(${scale})`;
 }
 
+// Testimonials carousel
 function initializeTestimonials() {
     let currentTestimonial = 0;
     const testimonials = document.querySelectorAll('.testimonial-item');

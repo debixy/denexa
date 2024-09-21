@@ -1,0 +1,27 @@
+// Mixins for Flexbox
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+// Mixin for transitions
+@mixin transition($property, $duration: 0.3s, $ease: ease-in-out) {
+    transition: $property $duration $ease;
+}
+
+// Mixin for border radius
+@mixin border-radius($radius: $border-radius) {
+    border-radius: $radius;
+}
+
+// Mixin for box-shadow
+@mixin box-shadow($shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075)) {
+    box-shadow: $shadow;
+}

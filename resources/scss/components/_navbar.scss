@@ -1,24 +1,39 @@
 .navbar {
     background: $primary-gradient;
     padding: 1rem;
-    position: sticky;
+    position: relative;
     top: 0;
-    z-index: 10;
+    width: 100%;
+    z-index: 1000;
+    font-family: $font-family-base;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    @include transition(all);
 
-    .container {
-        @include flex-center;
-        justify-content: space-between;
-        max-width: 1200px;
-        margin: 0 auto;
+    &.sticky {
+        position: fixed;
+        top: 0;
+        background-color: $light-gray;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
-    &-logo .logo {
-        width: 150px;
+    .container {
+        @include container;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &-logo {
+        .logo {
+            width: 150px;
+            @include transition(width);
+        }
     }
 
     &-links {
         display: flex;
         justify-content: center;
+        align-items: center;
         flex-grow: 1;
 
         .nav-list {
@@ -26,28 +41,61 @@
             display: flex;
             gap: 2rem;
 
-            .nav-link {
-                font-size: 1rem;
-                color: $white;
-                text-transform: uppercase;
-                @include transition(color);
+            .nav-item {
+                position: relative;
 
-                &:hover {
-                    color: $light-gray;
+                .nav-link {
+                    @include nav-link-styling;
+
+                    &:hover {
+                        color: $light-gray;
+                    }
+                }
+
+                // Dropdown menu
+                .dropdown-menu {
+                    display: none;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    background-color: $background-light;
+                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+                    border-radius: 10px;
+                    padding: 1rem;
+                    z-index: 100;
+                    min-width: 200px;
+
+                    .dropdown-item {
+                        color: $dark-gray;
+                        padding: 0.5rem 1rem;
+                        border-radius: 5px;
+                        @include transition(all);
+
+                        &:hover {
+                            background-color: $light-grey;
+                        }
+                    }
+                }
+
+                &:hover .dropdown-menu {
+                    display: block;
                 }
             }
         }
     }
 
-    .cta .btn {
-        background-color: $cta-bg;
-        color: $white;
-        padding: 0.75rem 1.5rem;
-        border-radius: 5px;
-        @include transition(background-color);
+    .cta {
+        .btn {
+            background-color: $cta-bg;
+            color: $white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            @include transition(background-color);
 
-        &:hover {
-            background-color: $cta-bg-hover;
+            &:hover {
+                background-color: $cta-bg-hover;
+            }
         }
     }
 
@@ -57,8 +105,10 @@
         border: none;
         font-size: 1.5rem;
         color: $white;
+        cursor: pointer;
     }
 
+    // Mobile Responsive Styles
     @include respond-to(md) {
         .navbar-toggler {
             display: block;
@@ -72,11 +122,27 @@
             top: 100%;
             left: 0;
             width: 100%;
-            background-color: #4d44b8;
+            background-color: $black-200;
             padding: 1rem;
+            text-align: center;
 
+            // When the mobile menu is active
             &.active {
                 display: flex;
+                flex-direction: column;
+                align-items: center; // Ensure items are centered
+            }
+
+            .nav-list {
+                flex-direction: column; // Arrange nav items in a column
+                gap: 1rem; // Add space between items
+
+                .nav-item {
+                    .nav-link {
+                        padding: 0.5rem 0; // Add padding for better spacing
+                        font-size: 1.2rem; // Make links larger for mobile view
+                    }
+                }
             }
         }
     }

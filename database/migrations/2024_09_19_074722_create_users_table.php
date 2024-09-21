@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('username')->unique();
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
             $table->string('email')->unique();
             $table->string('password');
             $table->string('phone')->nullable();
@@ -23,7 +23,8 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('avatar')->nullable();
             $table->date('birthday')->nullable();
-            $table->foreignId('country_id')->constrained()->onDelete('cascade');
+            $table->foreignId('country_id')->nullable()->constrained()->onDelete('cascade');
+
             $table->timestamp('last_login')->nullable();
             $table->string('role')->default('user');
             $table->rememberToken();

@@ -1,0 +1,105 @@
+$app-bg-color: #f4f4f4; // Background color for the app
+$header-bg-color: #343a40; // Header background color
+$header-text-color: #ffffff; // Header text color
+$sidebar-bg-color: #ffffff; // Sidebar background color
+$sidebar-link-color: #343a40; // Sidebar link color
+$sidebar-link-hover-color: #007bff; // Sidebar link hover color
+$alert-success-bg: #d4edda; // Success alert background
+$alert-danger-bg: #f8d7da; // Danger alert background
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    .app-header {
+        background-color: $header-bg-color;
+        color: $header-text-color;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+
+        .logo img {
+            max-height: 40px;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+
+            span {
+                margin-right: 1rem;
+                font-weight: bold;
+            }
+
+            .logout-btn {
+                color: $header-text-color;
+                text-decoration: none;
+                padding: 0.5rem 1rem;
+                background-color: transparent;
+                border: 1px solid $header-text-color;
+                border-radius: 4px;
+                transition: background-color 0.3s;
+
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.1);
+                }
+            }
+        }
+    }
+
+    .app-body {
+        display: flex;
+        flex: 1;
+
+        .app-sidebar {
+            background-color: $sidebar-bg-color;
+            width: 250px;
+            padding: 1rem;
+
+            nav ul {
+                list-style: none;
+                padding: 0;
+
+                li {
+                    margin: 1rem 0;
+
+                    a {
+                        color: $sidebar-link-color;
+                        text-decoration: none;
+                        padding: 0.5rem;
+                        display: block;
+                        transition: color 0.3s;
+
+                        &:hover {
+                            color: $sidebar-link-hover-color;
+                        }
+                    }
+                }
+            }
+        }
+
+        .app-content {
+            flex: 1;
+            padding: 2rem;
+            background-color: $app-bg-color;
+
+            .alert {
+                padding: 1rem;
+                border-radius: 4px;
+                margin-bottom: 1rem;
+
+                &.alert-success {
+                    background-color: $alert-success-bg;
+                    color: #155724;
+                }
+
+                &.alert-danger {
+                    background-color: $alert-danger-bg;
+                    color: #721c24;
+                }
+            }
+        }
+    }
+}

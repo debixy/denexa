@@ -1,13 +1,44 @@
+// Mixin for consistent nav link styling
+@mixin nav-link-styling {
+    font-size: 1rem;
+    color: $white;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    @include transition(color);
+}
+
+// Container mixin for centering content with a max-width
+@mixin container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+// Transition
 @mixin transition($properties, $duration: 0.3s, $timing: ease) {
     transition: $properties $duration $timing;
 }
 
+// Flex center
 @mixin flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+// Card styles
+@mixin card-style {
+    background: $card-bg;
+    box-shadow: $card-shadow;
+    border-radius: $card-border-radius;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    @include transition(all);
+}
+
+// Responsive
 @mixin respond-to($breakpoint) {
     @if $breakpoint == md {
         @media (max-width: $breakpoint-md) {

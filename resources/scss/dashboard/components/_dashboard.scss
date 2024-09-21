@@ -1,0 +1,50 @@
+.dashboard {
+    .card {
+        margin-bottom: $spacing-unit;
+        border: 1px solid $light-color;
+        border-radius: 0.25rem;
+
+        &.p-3 {
+            padding: 1.5rem; // Custom padding
+        }
+    }
+
+    .swiper-container {
+        .swiper-slide {
+            @include flex-center;
+            height: 200px; // Fixed height for slides
+        }
+    }
+
+    .table {
+        thead {
+            background-color: $dark-color;
+            color: white;
+
+            th {
+                padding: $spacing-unit;
+            }
+        }
+
+        tbody {
+            tr {
+                &:hover {
+                    background-color: $light-color;
+                }
+
+                td {
+                    padding: $spacing-unit / 2;
+                }
+            }
+        }
+    }
+
+    .list-group-item {
+        justify-content: space-between;
+        padding: $spacing-unit / 2;
+
+        .badge {
+            font-size: 0.9em;
+        }
+    }
+}

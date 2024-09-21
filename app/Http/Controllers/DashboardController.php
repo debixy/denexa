@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Project;
 use App\Models\Service;
-use App\Models\Role;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -19,16 +17,26 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // Role-based dashboard
+        return $this->dashboardView();
+    }
+
+    /**
+     * Get the dashboard view based on user role.
+     *
+     * @return \Illuminate\View\View
+     */
+    protected function dashboardView()
+    {
         $user = Auth::user();
         $role = $user->roles->first()->name ?? 'user'; // Assuming one role per user
 
-        if ($role === 'admin') {
-            return $this->adminDashboard();
-        } elseif ($role === 'manager') {
-            return $this->managerDashboard();
-        } else {
-            return $this->userDashboard();
+        switch ($role) {
+            case 'admin':
+                return $this->adminDashboard();
+            case 'manager':
+                return $this->managerDashboard();
+            default:
+                return $this->userDashboard();
         }
     }
 

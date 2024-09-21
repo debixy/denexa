@@ -1,0 +1,110 @@
+// Variables
+$primary-color: #6c63ff;
+$success-color: #d4edda;
+$error-color: #f8d7da;
+$danger-color: #721c24;
+$text-danger: #f44336;
+
+.kyc-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+.kyc-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+
+    .logo-container {
+        text-align: center;
+        margin-bottom: 20px;
+
+        .logo {
+            max-width: 100px;
+        }
+    }
+
+    .description {
+        text-align: center;
+        margin-bottom: 20px;
+
+        .kyc-title {
+            font-size: 24px;
+            color: $primary-color;
+        }
+
+        .kyc-text {
+            color: #666;
+        }
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+
+            &:focus {
+                border-color: $primary-color;
+                outline: none;
+            }
+        }
+
+        .text-danger {
+            color: $text-danger;
+            font-size: 0.875em;
+        }
+    }
+
+    .kyc-btn {
+        background-color: $primary-color;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 10px 15px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: darken($primary-color, 10%);
+        }
+    }
+}
+
+// Alerts
+.alert {
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+
+    &.alert-success {
+        background-color: $success-color;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+
+    &.alert-danger {
+        background-color: $error-color;
+        color: $danger-color;
+        border: 1px solid #f5c6cb;
+    }
+}
